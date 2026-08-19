@@ -47,6 +47,31 @@
                 <a href="{{ route('lotes.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('lotes.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
                     <i class="fas fa-map-marked-alt w-5"></i> Lotes
                 </a>
+                
+                <!-- Enlace a VENTAS -->
+                <a href="{{ route('ventas.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('ventas.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
+                    <i class="fas fa-dollar-sign w-5"></i> Ventas
+                </a>
+                
+                <!-- Enlace a TAREAS -->
+                <a href="{{ route('tareas.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('tareas.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
+                    <i class="fas fa-clipboard-check w-5"></i> Tareas
+                </a>
+
+                <!-- Enlace a INVENTARIO -->
+                <a href="{{ route('inventario.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('inventario.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
+                    <i class="fas fa-warehouse w-5"></i> Inventario
+                </a>
+
+                <!-- Enlace a ENTREGAS -->
+                <a href="{{ route('entregas.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('entregas.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
+                    <i class="fas fa-truck-loading w-5"></i> Entregas
+                </a>
+
+                <!-- Enlace a NÓMINA -->
+                <a href="{{ route('nomina.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('nomina.*') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
+                    <i class="fas fa-credit-card w-5"></i> Nómina
+                </a>
             </nav>
 
             <form action="{{ route('logout') }}" method="POST">

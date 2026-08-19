@@ -26,7 +26,7 @@ class AdminDashboardController extends Controller
         $totalProveedores = $this->valorSeguro('proveedor');
         
         $totalCompras = $this->valorSeguro('compra');
-        $totalVentas = $this->valorSeguro('venta');
+        $totalVentas = $this->valorSeguro('ventas');
         $totalCosechas = $this->valorSeguro('cosecha');
         $totalMantenimientos = $this->valorSeguro('mantenimiento');
 
