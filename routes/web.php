@@ -10,6 +10,8 @@ use App\Http\Controllers\PagoNominaController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\AdminEntregaController;
 use App\Http\Controllers\WorkerDashboardController;
+use App\Http\Controllers\WorkerTaskController;
+use App\Http\Controllers\WorkerNominaController;
 use Illuminate\Support\Facades\Route;
 
 // 1. Página principal (Hero, slider, módulos)
@@ -65,6 +67,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 // 4. GRUPO DEL TRABAJADOR
 Route::middleware(['auth'])->prefix('trabajador')->group(function () {
     Route::get('/dashboard', [WorkerDashboardController::class, 'index'])->name('trabajador.dashboard');
+    
+    // Rutas de las Tareas
+    Route::get('/tareas', [WorkerTaskController::class, 'index'])->name('trabajador.tareas');
+    Route::get('/historial', [WorkerTaskController::class, 'history'])->name('trabajador.historial');
+    Route::patch('/tareas/{id}/start', [WorkerTaskController::class, 'startTask'])->name('trabajador.tareas.start');
+    Route::post('/tareas/{id}/complete', [WorkerTaskController::class, 'completeTask'])->name('trabajador.tareas.complete');
+
+    // Ruta de Mi Nómina
+    Route::get('/nomina', [WorkerNominaController::class, 'index'])->name('trabajador.nomina');
 });
 
 // 5. Rutas de perfil nativas de Laravel Breeze
