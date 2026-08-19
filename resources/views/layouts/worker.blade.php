@@ -40,7 +40,7 @@
                 <a href="{{ route('trabajador.nomina') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('trabajador.nomina') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
                     <i class="fas fa-credit-card w-5"></i> Mi nómina
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition">
+                <a href="{{ route('trabajador.perfil') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('trabajador.perfil') ? 'bg-green-500/20 text-green-100' : 'hover:bg-white/10 transition' }}">
                     <i class="fas fa-user w-5"></i> Mi perfil
                 </a>
             </nav>

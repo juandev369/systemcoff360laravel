@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminEntregaController;
 use App\Http\Controllers\WorkerDashboardController;
 use App\Http\Controllers\WorkerTaskController;
 use App\Http\Controllers\WorkerNominaController;
+use App\Http\Controllers\WorkerProfileController;
 use Illuminate\Support\Facades\Route;
 
 // 1. Página principal (Hero, slider, módulos)
@@ -76,6 +77,11 @@ Route::middleware(['auth'])->prefix('trabajador')->group(function () {
 
     // Ruta de Mi Nómina
     Route::get('/nomina', [WorkerNominaController::class, 'index'])->name('trabajador.nomina');
+
+    // Rutas del perfil
+    Route::get('/perfil', [WorkerProfileController::class, 'edit'])->name('trabajador.perfil');
+    Route::patch('/perfil', [WorkerProfileController::class, 'update'])->name('trabajador.perfil.update');
+    Route::put('/perfil/password', [WorkerProfileController::class, 'updatePassword'])->name('trabajador.password.update');
 });
 
 // 5. Rutas de perfil nativas de Laravel Breeze
