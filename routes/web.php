@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminTareaController;
 use App\Http\Controllers\PagoNominaController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\AdminEntregaController;
+use App\Http\Controllers\WorkerDashboardController;
 use Illuminate\Support\Facades\Route;
 
 // 1. Página principal (Hero, slider, módulos)
@@ -20,6 +21,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     if (auth()->user()->role_id == 1 || auth()->user()->isAdmin()) {
         return redirect()->route('admin.dashboard');
+    }
+    if (auth()->user()->role_id == 2) {
+        return redirect()->route('trabajador.dashboard');
     }
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -56,10 +60,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('entregas/herramienta', [AdminEntregaController::class, 'storeHerramienta'])->name('entregas.herramienta.store');
     Route::post('entregas/epp', [AdminEntregaController::class, 'storeEpp'])->name('entregas.epp.store');
     Route::patch('entregas/herramienta/{id}/devolver', [AdminEntregaController::class, 'returnHerramienta'])->name('entregas.herramienta.return');
-    Route::patch('entregas/epp/{id}/devolver', [AdminEntregaController::class, 'returnEpp'])->name('entregas.epp.return');
 });
 
-// 4. Rutas de perfil nativas de Laravel Breeze
+// 4. GRUPO DEL TRABAJADOR
+Route::middleware(['auth'])->prefix('trabajador')->group(function () {
+    Route::get('/dashboard', [WorkerDashboardController::class, 'index'])->name('trabajador.dashboard');
+});
+
+// 5. Rutas de perfil nativas de Laravel Breeze
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
